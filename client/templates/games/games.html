@@ -1,0 +1,27 @@
+<template name="games">
+  {{#if Template.subscriptionsReady}}
+    {{#if isLoading}}
+      {{> spinner}}
+    {{else}}
+      <div class="row">
+        {{#each games}}
+          <div class="col s12 m6">
+            {{> gamesCard 
+            _id=_id 
+            ownerName=ownerName
+            participantsCount=participantsCount 
+            maxParticipants=maxParticipants
+            onJoinGame=onJoinGame}}
+          </div>
+        {{/each}}
+      </div>
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large waves-effect waves-light red" id='new-game'>
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+    {{/if}}
+  {{else}}
+    {{> spinner}}
+  {{/if}}
+</template>

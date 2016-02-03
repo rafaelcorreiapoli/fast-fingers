@@ -1,15 +1,15 @@
 <template name="nav">
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">Happy Finger</a>
+      <a href="{{pathFor 'home'}}" class="brand-logo center">Happy Finger</a>
       <ul id="nav-mobile" class="left">
         <li>
-          <a href="sass.html">Games</a>
+          <a href="{{pathFor 'games'}}">Games</a>
         </li>
       </ul>
       <ul id="nav-mobile" class="right">
         <li>
-          <a href="sass.html">Profile</a>
+          <a href="{{pathFor 'profile'}}">Profile</a>
         </li>
       </ul>      
     </div>

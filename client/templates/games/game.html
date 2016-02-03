@@ -1,0 +1,13 @@
+<template name="game">
+  {{#if Template.subscriptionsReady}}
+    {{#with game}}
+      <h1>{{moFormat (getDate gameCountdown) 'mm:ss'}}</h1>
+      <a class="waves-effect waves-light btn" id="start-game">
+        <i class="material-icons left">cloud</i>Start!
+      </a>
+      {{> participants gameId=_id}}
+    {{/with}}
+  {{else}}
+    {{> spinner}}
+  {{/if}}
+</template>

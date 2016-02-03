@@ -14,11 +14,23 @@ Template.game.helpers({
   },
   getDate(number) {
     return new Date(0, 0, 0, 0, 0, number);
+  },
+  joinCharacters(characters) {
+    return characters.join('');
   }
 });
 
 Template.game.events({
   'click #start-game': function() {
     Meteor.call('startGame', FlowRouter.getParam('id'));
+  },
+  'input #game-input': function(e) {
+    let $el = $(e.target);
+    let text = $el.val();
+    $el.val('');
+    if (text) {
+      Meteor.call('input', text);
+    }
   }
-})
+});
+

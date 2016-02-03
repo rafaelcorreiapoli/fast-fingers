@@ -1,7 +1,11 @@
 <template name="participants">
   <ul class="collection">
     {{#each participants}}
-      {{> participantItem}}
+      {{> participantItem
+        avatar=getAvatar
+        name=nickname
+        rank=1
+        correct=correct}}
     {{/each}}
   </ul>
 </template>

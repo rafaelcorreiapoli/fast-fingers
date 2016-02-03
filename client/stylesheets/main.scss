@@ -4,3 +4,7 @@ $primary-color: color("blue", "lighten-2");
  
 // import main scss file
 @import "{poetic:materialize-scss}/sass/materialize.scss";
+
+span.correct{
+  background-color: #7CFF91;
+}

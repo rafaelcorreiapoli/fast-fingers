@@ -8,16 +8,25 @@ Template.game.onCreated(function() {
 });
 Template.game.helpers({
   game() {
-    return Games.findOne({
-      _id: FlowRouter.getParam('id')
-    });
-  },
-  getDate(number) {
-    return new Date(0, 0, 0, 0, 0, number);
-  },
-  joinCharacters(characters) {
-    return characters.join('');
-  }
+      return Games.findOne({
+        _id: FlowRouter.getParam('id')
+      });
+    },
+    getDate(number) {
+      return new Date(0, 0, 0, 0, 0, number);
+    },
+    joinCharacters(characters) {
+      let myParticipant = Participants.findOne({
+        _id: Session.get('participantId')
+      });
+      if (!myParticipant) return characters.join('');
+      let lastPart = characters.slice();
+      lastPart.splice(0, myParticipant.correct);
+      let firstPart = characters.slice();
+      firstPart.splice(myParticipant.correct, characters.length);
+
+      return `<span class='correct'>${firstPart.join('')}</span>${lastPart.join('')}`;
+    }
 });
 
 Template.game.events({
@@ -33,4 +42,3 @@ Template.game.events({
     }
   }
 });
-
